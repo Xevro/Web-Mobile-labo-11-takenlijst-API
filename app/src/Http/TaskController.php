@@ -43,7 +43,7 @@ class TaskController extends ApiBaseController {
         $priority = $bodyParams['priority'] ?? '';
         $name = $bodyParams['name'] ?? '';
 
-        if ((in_array($priority, ['low', 'normal', 'high'])) && ($name !== '')) {
+        if ((in_array($priority, ['low', 'normal', 'high'])) && (strLen($name) < 2)) {
             $stmt = $this->db->prepare('INSERT INTO tasks (name, priority, added_on) VALUES (?, ?, ?);');
             $stmt->execute([$name, $priority, (new DateTime())->format('Y-m-d H:i:s')]);
             $this->message(201, "Task added successfully");
