@@ -15,8 +15,8 @@ $router->get('/', function() {
 $router->mount('/api', function() use ($router) {
 
     $router->get('/tasks', 'TaskController@overview');
-    $router->post('/tasks', 'TaskController@methodNotAllowed');
-    $router->get('/tasks/(\d+)', 'TaskController@methodNotAllowed');
+    $router->post('/tasks', 'TaskController@addTask');
+    $router->get('/tasks/(\d+)', 'TaskController@getTask');
     $router->put('/tasks/(\d+)', 'TaskController@methodNotAllowed');
     $router->patch('/tasks/(\d+)', 'TaskController@methodNotAllowed');
     $router->delete('/tasks/(\d+)', 'TaskController@delete');
